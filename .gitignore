@@ -1,0 +1,13 @@
+# Ignora i file generati
+dist/
+*.log
+*.tsbuildinfo
+
+# Ignora le cartelle node_modules
+node_modules/
+
+# Ignora i file di configurazione locali
+.env
+
+# Ignora i file di cache
+.cache/
