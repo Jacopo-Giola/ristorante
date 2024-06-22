@@ -1,12 +1,26 @@
 import React from 'react';
-import { Button, Typography } from '@mui/material';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Register from './pages/Register';
+import Login from './pages/Login';
 
 const App: React.FC = () => {
   return (
-    <div>
-      <Typography variant="h1">Benvenuto in MUI!</Typography>
-      <Button variant="contained" color="primary">Cliccami</Button>
-    </div>
+    <Router>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 };
 
