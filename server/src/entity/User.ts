@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Sezione } from './Sezione'
+import { Piatto } from './Piatto';
 
 @Entity()
 export class User {
@@ -13,4 +15,10 @@ export class User {
 
   @Column({ type: 'varchar', length: 255 })
   password!: string;
+
+  @OneToMany(() => Sezione, sezione => sezione.user)
+  sezioni!: Sezione[];
+
+  @OneToMany(() => Piatto, piatto => piatto.user)
+  piatti!: Piatto[];
 }

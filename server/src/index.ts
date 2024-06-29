@@ -2,6 +2,8 @@ import 'reflect-metadata';
 import express from 'express';
 import { DataSource } from 'typeorm';
 import { User } from './entity/User';
+import { Sezione } from './entity/Sezione';
+import { Piatto } from './entity/Piatto';
 import authRoutes from './routes/auth';
 import cors from 'cors';
 
@@ -17,7 +19,7 @@ const AppDataSource = new DataSource({
   database: 'ristorante',
   synchronize: true,
   logging: false,
-  entities: [User],
+  entities: [User, Sezione, Piatto],
   migrations: [],
   subscribers: [],
 });
