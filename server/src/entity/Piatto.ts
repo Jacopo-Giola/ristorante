@@ -16,7 +16,7 @@ export class Piatto {
   @Column({ type: 'decimal', precision: 10, scale: 2 })
   prezzo!: number;
 
-  @ManyToOne(() => Sezione, sezione => sezione.piatti)
+  @ManyToOne(() => Sezione, sezione => sezione.piatti, { nullable: false })
   sezione!: Sezione;
 
   @ManyToOne(() => User, user => user.piatti)

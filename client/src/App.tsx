@@ -1,7 +1,9 @@
+// App.tsx
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Menu from './pages/Menu';  // Importa il componente Menu
 
 const App: React.FC = () => {
   return (
@@ -19,6 +21,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/menu" element={<Menu />} />
       </Routes>
     </Router>
   );

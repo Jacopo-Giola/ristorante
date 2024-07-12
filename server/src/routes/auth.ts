@@ -2,8 +2,7 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { User } from '../entity/User';
-import { DataSource } from 'typeorm';
-import AppDataSource from './../index';
+import AppDataSource from '../index';
 
 const router = express.Router();
 

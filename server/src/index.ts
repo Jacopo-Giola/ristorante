@@ -4,7 +4,9 @@ import { DataSource } from 'typeorm';
 import { User } from './entity/User';
 import { Sezione } from './entity/Sezione';
 import { Piatto } from './entity/Piatto';
-import authRoutes from './routes/auth';
+import authRoutes from './routes/Auth';
+import sezioniRoutes from './routes/Sezioni';
+import piattiRoutes from './routes/Piatti';
 import cors from 'cors';
 
 const app = express();
@@ -38,6 +40,8 @@ AppDataSource.initialize()
     console.log('Data Source has been initialized!');
 
     app.use('/auth', authRoutes);
+    app.use('/piatti', piattiRoutes);
+    app.use('/sezioni', sezioniRoutes);
 
     app.listen(port, () => {
       console.log('Server is running at http://localhost:' + port);
