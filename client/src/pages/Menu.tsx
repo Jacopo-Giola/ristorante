@@ -122,6 +122,30 @@ const Menu: React.FC = () => {
     setNomeSezione(sezione.nome);
   };
 
+  const handleDeletePiatto = async (id: number) => {
+    try {
+      const token = localStorage.getItem('token');
+      await axios.delete(`http://localhost:3001/piatti/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setPiatti(piatti.filter(piatto => piatto.id !== id));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleDeleteSezione = async (id: number) => {
+    try {
+      const token = localStorage.getItem('token');
+      await axios.delete(`http://localhost:3001/sezioni/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setSezioni(sezioni.filter(sezione => sezione.id !== id));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <h2>Sezioni</h2>
@@ -130,6 +154,7 @@ const Menu: React.FC = () => {
           <li key={sezione.id}>
             {sezione.nome}
             <button onClick={() => handleEditSezione(sezione)}>Modifica</button>
+            <button onClick={() => handleDeleteSezione(sezione.id)}>Elimina</button>
           </li>
         ))}
       </ul>
@@ -147,8 +172,9 @@ const Menu: React.FC = () => {
       <ul>
         {piatti.map((piatto) => (
           <li key={piatto.id}>
-            {piatto.nome} - {piatto.descrizione} - {piatto.prezzo} € - {piatto.sezioneId}
+            {piatto.nome} - {piatto.descrizione} - {piatto.prezzo} €
             <button onClick={() => handleEditPiatto(piatto)}>Modifica</button>
+            <button onClick={() => handleDeletePiatto(piatto.id)}>Elimina</button>
           </li>
         ))}
       </ul>
